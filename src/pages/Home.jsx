@@ -1,13 +1,6 @@
 // Home.jsx
 import React, { useState } from "react";
-import {
-  Container,
-  Navbar,
-  Nav,
-  Button,
-  Row,
-  Col,
-} from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import LogoutIcon from "@mui/icons-material/Logout";
 
@@ -22,7 +15,7 @@ const pages = [
   { key: "prepare", text: "Prepare Samples", icon: "🧪" },
   { key: "monitor", text: "Monitor Samples", icon: "📊" },
   { key: "dispose", text: "Dispose Samples", icon: "🗑️" },
-  { key: "process", text: "Process Samples", icon: "⚙️" },
+  // { key: "process", text: "Process Samples", icon: "⚙️" },
 ];
 
 export default function Home() {
@@ -44,7 +37,7 @@ export default function Home() {
         backgroundColor: "#f5f5f5",
       }}
     >
-      {/* Top Header */}
+      {/* ======= HEADER ======= */}
       <div
         style={{
           backgroundColor: "#fff",
@@ -56,16 +49,8 @@ export default function Home() {
         }}
       >
         <div className="d-flex align-items-center gap-3">
-          <img
-            src="/logo1.png"
-            alt="logo1"
-            style={{ width: 48, height: 48 }}
-          />
-          <img
-            src="/logo2.png"
-            alt="logo2"
-            style={{ width: 48, height: 48 }}
-          />
+          <img src="/logo1.png" alt="logo1" style={{ width: 48, height: 48 }} />
+          <img src="/logo2.png" alt="logo2" style={{ width: 48, height: 48 }} />
         </div>
 
         <h3
@@ -94,144 +79,81 @@ export default function Home() {
         </Button>
       </div>
 
-      {/* Navigation Bar (moves to top on small screens) */}
+      {/* ======= TOP NAV BAR (REPLACED SIDEBAR) ======= */}
       <div
         style={{
           backgroundColor: "#f9f9f9",
           borderBottom: "1px solid #e0e0e0",
           padding: "0.75rem 1rem",
-          display: "none",
-        }}
-        className="d-md-none"
-      >
-        <div className="d-flex gap-2 overflow-auto" style={{ overflowX: "auto" }}>
-          {pages.map((p) => (
-            <button
-              key={p.key}
-              onClick={() => setActive(p.key)}
-              style={{
-                cursor: "pointer",
-                fontWeight: active === p.key ? 600 : 500,
-                color: active === p.key ? "#fff" : "#333",
-                backgroundColor:
-                  active === p.key ? "#3f237d" : "transparent",
-                padding: "0.5rem 0.75rem",
-                borderRadius: "6px",
-                textDecoration: "none",
-                border: "none",
-                display: "flex",
-                alignItems: "center",
-                gap: "0.25rem",
-                transition: "all 0.3s ease",
-                whiteSpace: "nowrap",
-                fontSize: "0.85rem",
-              }}
-              onMouseEnter={(e) => {
-                if (active !== p.key) {
-                  e.currentTarget.style.backgroundColor = "#f0f0f0";
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (active !== p.key) {
-                  e.currentTarget.style.backgroundColor = "transparent";
-                }
-              }}
-            >
-              <span>{p.icon}</span>
-              <span className="d-none d-sm-inline">{p.text}</span>
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Main Content with Sidebar */}
-      <div
-        style={{
           display: "flex",
-          flex: 1,
-          minHeight: "calc(100vh - 100px)",
+          justifyContent: "center",
+          flexWrap: "wrap",
+          gap: "0.5rem",
         }}
       >
-        {/* Left Sidebar (Desktop only) */}
-        <div
-          style={{
-            width: "250px",
-            backgroundColor: "#f9f9f9",
-            borderRight: "1px solid #e0e0e0",
-            padding: "1.5rem 0",
-            overflowY: "auto",
-            display: "none",
-          }}
-          className="d-none d-md-block"
-        >
-          <div className="px-3 d-flex flex-column gap-2">
-            {pages.map((p) => (
-              <button
-                key={p.key}
-                onClick={() => setActive(p.key)}
-                style={{
-                  cursor: "pointer",
-                  fontWeight: active === p.key ? 600 : 500,
-                  color: active === p.key ? "#fff" : "#333",
-                  backgroundColor:
-                    active === p.key ? "#3f237d" : "transparent",
-                  padding: "0.75rem 1rem",
-                  borderRadius: "6px",
-                  textDecoration: "none",
-                  border: "none",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "0.5rem",
-                  transition: "all 0.3s ease",
-                }}
-                onMouseEnter={(e) => {
-                  if (active !== p.key) {
-                    e.currentTarget.style.backgroundColor = "#f0f0f0";
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (active !== p.key) {
-                    e.currentTarget.style.backgroundColor = "transparent";
-                  }
-                }}
-              >
-                <span>{p.icon}</span>
-                {p.text}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Right Content Area */}
-        <div
-          style={{
-            flex: 1,
-            padding: "2rem",
-            backgroundColor: "#fff",
-            overflowY: "auto",
-          }}
-        >
-          <h5
+        {pages.map((p) => (
+          <button
+            key={p.key}
+            onClick={() => setActive(p.key)}
             style={{
-              marginBottom: "1.5rem",
-              fontWeight: 700,
-              color: "#3f237d",
+              cursor: "pointer",
+              fontWeight: active === p.key ? 600 : 500,
+              color: active === p.key ? "#fff" : "#333",
+              backgroundColor: active === p.key ? "#3f237d" : "transparent",
+              padding: "0.6rem 1rem",
+              borderRadius: "6px",
+              textDecoration: "none",
+              border: "1px solid #ccc",
               display: "flex",
               alignItems: "center",
-              gap: "0.75rem",
+              gap: "0.4rem",
+              transition: "all 0.3s ease",
+              fontSize: "0.9rem",
+            }}
+            onMouseEnter={(e) => {
+              if (active !== p.key)
+                e.currentTarget.style.backgroundColor = "#f0f0f0";
+            }}
+            onMouseLeave={(e) => {
+              if (active !== p.key)
+                e.currentTarget.style.backgroundColor = "transparent";
             }}
           >
-            <span>{activePageObj?.icon}</span>
-            {activePageObj?.text}
-          </h5>
+            <span>{p.icon}</span>
+            <span>{p.text}</span>
+          </button>
+        ))}
+      </div>
 
-          {/* Content Sections */}
-          {active === "load" && <LoadInventory />}
-          {active === "prepare" && <PrepareSamples />}
-          {active === "monitor" && <MonitorSamples />}
-          {active === "dispose" && <DisposeSamples />}
-          {active === "process" && <ProcessPage />}
-        </div>
+      {/* ======= MAIN CONTENT ======= */}
+      <div
+        style={{
+          flex: 1,
+          padding: "2rem",
+          backgroundColor: "#fff",
+          overflowY: "auto",
+        }}
+      >
+        <h5
+          style={{
+            marginBottom: "1.5rem",
+            fontWeight: 700,
+            color: "#3f237d",
+            display: "flex",
+            alignItems: "center",
+            gap: "0.75rem",
+          }}
+        >
+          <span>{activePageObj?.icon}</span>
+          {activePageObj?.text}
+        </h5>
+
+        {/* Page content based on selected menu */}
+        {active === "load" && <LoadInventory />}
+        {active === "prepare" && <PrepareSamples />}
+        {active === "monitor" && <MonitorSamples />}
+        {active === "dispose" && <DisposeSamples />}
+        {/* {active === "process" && <ProcessPage />} */}
       </div>
     </div>
   );
